@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -14,9 +15,9 @@ app.use((req, res, next)=>{ //middleware
     fs.appendFileSync('server.log',log+'\n');
     next();
 });
-app.use((req,res,next)=>{
-    res.render('errorPage.hbs');
-});
+// app.use((req,res,next)=>{
+//     res.render('errorPage.hbs');
+// });
 app.use(express.static(__dirname + '/public'));
 
 hbs.registerHelper('getcurrentYear',()=>{
@@ -43,6 +44,6 @@ app.get('/bad',(req,res)=>{
         errorMessage : 'sorry there was an error 404',
     });
 });
-app.listen(3000,()=>{
-    console.log('server is up on port-3000');
+app.listen(port,()=>{
+    console.log(`server is up on port-${port}`);
 });
