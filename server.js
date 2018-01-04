@@ -34,6 +34,12 @@ app.get('/',(req,res)=>{
         welcome:'meri website mai tumhara swagat hai'
     })
 });
+app.get('/projects',(req,res)=>{
+    res.render('projects.hbs',{
+        pageTitle : 'Hi welcome to my portfolio',
+        footer:"copyRight kanav Malik"
+    });
+});
 app.get('/about',(req,res)=>{
     res.render('about.hbs',{
         pageTitle : 'about page',
